@@ -33,6 +33,6 @@ class Singleton {
 
 int main() {
     Singleton single(2005, 11, 17);
-
+    
     return 0;
 }
