@@ -28,11 +28,11 @@ class Singleton {
     }
     void get() { cout << "Year: " << year << " Month: " << month << " Day: " << day << endl; }
 
-    ~Singleton() { cout << "Class is not working" << endl; }
+//    ~Singleton() { cout << "Class is not working" << endl; }
 };
 
 int main() {
     Singleton single(2005, 11, 17);
- 
+
     return 0;
 }
