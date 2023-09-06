@@ -1,38 +1,37 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Singleton {
-   private:
-    int year, month, day;
+   protected:
+    Singleton(string value) { message = value; }
+    static Singleton* singleton;
+    string message;
 
    public:
-    Singleton() {
-        year = 2000;
-        month = 12;
-        day = 30;
-        get();
-    }
+    Singleton(Singleton& other) = delete;
+    void operator=(const Singleton&) = delete;
 
-    Singleton(int date_year, int date_month, int date_day) {
-        year = date_year;
-        month = date_month;
-        day = date_day;
-        get();
-    }
+    static Singleton* instance(string value);
 
-    void message() { cout << "Hello world, i'm working!" << endl; }
-    void set(int date_year, int date_month, int date_day) {
-        year = date_year;
-        month = date_month;
-        day = date_day;
-    }
-    void get() { cout << "Year: " << year << " Month: " << month << " Day: " << day << endl; }
-
-//    ~Singleton() { cout << "Class is not working" << endl; }
+    string get() { return message; }
 };
 
+Singleton* Singleton::singleton = nullptr;
+
+Singleton* Singleton::instance(string value) {
+    if (singleton == nullptr) {
+        singleton = new Singleton(value);
+    }
+    return singleton;
+}
 int main() {
-    Singleton single(2005, 11, 17);
-    
+    Singleton* single1 = Singleton::instance("I'm number one.");
+    Singleton* single2 = Singleton::instance("I'm number two.");
+    string answ1 = single1->get();
+    string answ2 = single2->get();
+    cout << "We've created the first object: " << answ1 << endl;
+    cout << "We've created a second object: " << answ2 << endl;
+    cout << "The second object does not create a new one, but returns the first one." << endl;
     return 0;
 }
