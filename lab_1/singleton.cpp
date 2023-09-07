@@ -4,34 +4,41 @@ using namespace std;
 
 class Singleton {
    protected:
-    Singleton(string value) { message = value; }
+    Singleton(string user_login, string user_password) {
+        login = user_login;
+        password = user_password;
+    }
     static Singleton* singleton;
-    string message;
+    string login;
+    string password;
 
    public:
     Singleton(Singleton& other) = delete;
     void operator=(const Singleton&) = delete;
 
-    static Singleton* instance(string value);
+    static Singleton* instance(string user_login, string user_password);
 
-    string get() { return message; }
+    string get_login() { return login; }
+    string get_password() { return password; }
 };
 
 Singleton* Singleton::singleton = nullptr;
 
-Singleton* Singleton::instance(string value) {
+Singleton* Singleton::instance(string user_login, string user_password) {
     if (singleton == nullptr) {
-        singleton = new Singleton(value);
+        singleton = new Singleton(user_login, user_password);
     }
     return singleton;
 }
 int main() {
-    Singleton* single1 = Singleton::instance("I'm number one.");
-    Singleton* single2 = Singleton::instance("I'm number two.");
-    string answ1 = single1->get();
-    string answ2 = single2->get();
-    cout << "We've created the first object: " << answ1 << endl;
-    cout << "We've created a second object: " << answ2 << endl;
-    cout << "The second object does not create a new one, but returns the first one." << endl;
+    Singleton* single1 = Singleton::instance("login", "password");
+    string login = single1->get_login();
+    string password = single1->get_password();
+    cout << "logging in for the first time.\nlogin: " << login << "\npassword: " << password << endl;
+    Singleton* single2 = Singleton::instance("new_login", "new_password");
+    string new_login = single2->get_login();
+    string new_password = single2->get_password();
+    cout << "trying to log in a second time.\nlogin: " << new_login << "\npassword: " << new_password << endl;
+    cout << "the second authorization failed and gave us back our old login and password " << endl;
     return 0;
 }
