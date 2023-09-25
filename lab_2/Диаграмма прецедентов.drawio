@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2023-09-18T08:54:36.302Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.21" etag="H7rqY2-dWglBkC7-xqV1" version="21.7.5" type="github">
+  <diagram name="Page-1" id="c4acf3e9-155e-7222-9cf6-157b1a14988f">
+    <mxGraphModel dx="1356" dy="770" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-1" value="Subscriber" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="410" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-2" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.025;entryY=0.588;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="440" as="sourcePoint" />
+            <mxPoint x="280" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-3" value="Поиск пользователя в каталоге" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-4" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="440" as="sourcePoint" />
+            <mxPoint x="300" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-5" value="Добавления себя в каталог" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-6" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="440" as="sourcePoint" />
+            <mxPoint x="210" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-7" value="Редактирование своих данных" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="530" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-12" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="400" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-13" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="430" as="sourcePoint" />
+            <mxPoint x="550" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-14" value="Удаление абонента" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="230" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-15" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="430" as="sourcePoint" />
+            <mxPoint x="530" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-16" value="Редактирование абонента и самого каталога" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="510" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4kg8cQ3GrbY7j8Or72sc-17" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="4kg8cQ3GrbY7j8Or72sc-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="430" as="sourcePoint" />
+            <mxPoint x="440" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
