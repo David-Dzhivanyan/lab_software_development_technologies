@@ -95,12 +95,12 @@ public:
     }
 
     bool is_found(string name) {
-        if(subscriber_list[name] != 0){
+        map<string, Subscriber*>::iterator it;
+        it = subscriber_list.find(name);
+        if(it != subscriber_list.end()){
             return true;
-        } else {
-            cout << "User not found" << endl;
-            return false;
         }
+        return false;
     }
 
     void print_subscriber_list () {
@@ -116,11 +116,7 @@ public:
             Subscriber* subscriber = new Subscriber(name, address);
             subscriber_list[name] = subscriber;
         } else {
-            cout << "Press Y to create a user with that name: " << name << endl;
-            cin >> key;
-            if(key == "y"){
-                add_Subscriber(name, address);
-            }
+            cout << "User not found" << endl;
         }
     }
 };
@@ -131,25 +127,26 @@ class SingletonAddressBook {
 protected:
     SingletonAddressBook() {}
     static SingletonAddressBook* singleton;
-    map<string, SubscriberCategory*> categories;
-    map<string, Admin*> admin_List;
+    map<string, Admin*> admin_list;
 
 public:
     SingletonAddressBook(SingletonAddressBook& other) = delete;
     void operator = (const SingletonAddressBook&) = delete;
+    map<string, SubscriberCategory*> categories;
 
     void add_admin(string name) {
         Admin* admin = new Admin(name);
 
-        admin_List.insert(make_pair(name, admin));
+        admin_list.insert(make_pair(name, admin));
     }
 
     bool is_admin(string login){
-        if(admin_List[login] != 0) {
+        map<string, Admin*>::iterator it;
+        it = admin_list.find(login);
+        if(it != admin_list.end()) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     void addCategory(string name) {
@@ -220,17 +217,17 @@ void add_category(SingletonAddressBook* addressBook) {
     addressBook->addCategory(name);
 }
 
-SubscriberCategory* choose_category(SingletonAddressBook* addressBook, map<string, SubscriberCategory*> categories) {
+string choose_category(SingletonAddressBook* addressBook, map<string, SubscriberCategory*> categories) {
     cout << "Select an category " << endl;
     addressBook->print_categories();
     string category;
     cin >> category;
     if(categories[category] == 0) {
         cout << "Error, category does not exist" << endl;
-        return nullptr;
+        return "";
     } else {
         cout << "You have selected the category : " << category << endl;
-        return categories[category];
+        return category;
     }
 }
 
@@ -255,12 +252,6 @@ Address* enter_address() {
     return new Address(street, city, state, postal_code, country);
 }
 
-//street = new_street;
-//city = new_city;
-//state = new_state;
-//postal_code = new_postal_code;
-//country = new_country;
-
 int main() {
     Address* a1 = new Address("Shevskaya", "Volgograd", "Volgogradskaya obl", 40002, "Russia");
     Address* a2 = new Address("Shevskaya", "Volgograd", "Volgogradskaya obl", 40002, "USA");
@@ -281,14 +272,17 @@ int main() {
     Auth* auth = Auth::instance(login);
 
     char key = '0';
+
+    cout << "You have successfully logged in as " << login << endl;
+
     while(key != 'q') {
-        map<string, SubscriberCategory*> categories = addressBook->get_categories();
-        SubscriberCategory* category;
+        map<string, SubscriberCategory*> categories;
+        string category;
         Address* address;
         string name;
+        bool flag = true;
 
         if(addressBook->is_admin(auth->get_login())){
-            cout << "You have successfully logged in as admin " << login << endl;
             cout << "Select an action " << endl;
             cout << "1: Add a category " << endl;
             cout << "2: Select an existing " << endl;
@@ -296,76 +290,102 @@ int main() {
             switch (key) {
                 case '1':
                     add_category(addressBook);
+                    flag = false;
                     break;
                 case '2':
+                    categories = addressBook->get_categories();
                     category = choose_category(addressBook, categories);
+                    if(category == "") flag = false;
                     break;
                 default:
                     cout << "ERROR!";
                     continue;
             }
+            while(flag){
+                cout << "Select an action " << endl;
+                cout << "1: Show user list " << endl;
+                cout << "2: Show user information " << endl;
+                cout << "3: Add user" << endl;
+                cout << "4: Change user" << endl;
+                cout << "5: Select another category" << endl;
+                cin >> key;
 
-            cout << "Select an action " << endl;
-            cout << "1: Show user list " << endl;
-            cout << "2: Show user information " << endl;
-            cout << "3: Add user" << endl;
-            cout << "4: Change user" << endl;
-            cin >> key;
-
-            switch (key) {
-                case '1':
-                    category->print_subscriber_list();
-                    break;
-                case '2':
-                    cout << "Enter user name :" << endl;
-                    cin >> name;
-                    category->print_subscriber(name);
-                    break;
-                case '3':
-                    cout << "Enter user name :" << endl;
-                    cin >> name;
-                    address = enter_address();
-                    category->add_Subscriber(name, address);
-                    break;
-                case '4':
-                    cout << "Enter user name :" << endl;
-                    cin >> name;
-                    address = enter_address();
-                    category->changing_subscriber_data(name, address);
-                    break;
-                default:
-                    cout << "ERROR!";
-                    continue;
+                switch (key) {
+                    case '1':
+                        addressBook->categories[category]->print_subscriber_list();
+                        break;
+                    case '2':
+                        cout << "Enter user name :" << endl;
+                        cin >> name;
+                        addressBook->categories[category]->print_subscriber(name);
+                        break;
+                    case '3':
+                        cout << "Enter user name :" << endl;
+                        cin >> name;
+                        address = enter_address();
+                        addressBook->categories[category]->add_Subscriber(name, address);
+                        break;
+                    case '4':
+                        cout << "Enter user name :" << endl;
+                        cin >> name;
+                        address = enter_address();
+                        addressBook->categories[category]->changing_subscriber_data(name, address);
+                        break;
+                    case '5':
+                        flag = false;
+                        break;
+                    default:
+                        cout << "ERROR!";
+                        continue;
+                }
             }
         } else {
-            cout << "You have successfully logged in as " << login << endl;
             cout << "Select a category " << endl;
+            categories = addressBook->get_categories();
             category = choose_category(addressBook, categories);
+            if(category == "") flag = false;
+            name = auth->get_login();
 
-            cout << "Select an action " << endl;
-            cout << "1: Show user list " << endl;
-            cout << "2: Show user information " << endl;
-            cout << "3: Edit/Add your own" << endl;
-            cin >> key;
+            while (flag) {
+                cout << "Select an action " << endl;
+                cout << "1: Show user list " << endl;
+                cout << "2: Show user information " << endl;
+                cout << "3: Edit/Add your own" << endl;
+                cout << "4: Select another category" << endl;
+                cin >> key;
 
-            switch (key) {
-                case '1':
-                    category->print_subscriber_list();
-                    break;
-                case '2':
-                    cout << "Enter user name :" << endl;
-                    cin >> name;
-                    category->print_subscriber(name);
-                    break;
-                case '3':
-                    address = enter_address();
-                    category->changing_subscriber_data(auth->get_login(), address);
-                    break;
-                default:
-                    cout << "ERROR!";
-                    continue;
+                switch (key) {
+                    case '1':
+                        addressBook->categories[category]->print_subscriber_list();
+                        break;
+                    case '2':
+                        cout << "Enter user name :" << endl;
+                        cin >> name;
+                        addressBook->categories[category]->print_subscriber(name);
+                        break;
+                    case '3':
+                        address = enter_address();
+
+                        if(addressBook->categories[category]->is_found(name)) {
+                            addressBook->categories[category]->changing_subscriber_data(name, address);
+                        } else {
+                            cout << "User does not exist";
+                            cout << "Press Y to create a user with that name: " << name << endl;
+                            cin >> key;
+                            if(key == 'y'){
+                                addressBook->categories[category]->add_Subscriber(name, address);
+                            }
+                        }
+                        break;
+                    case '4':
+                        flag = false;
+                        break;
+                    default:
+                        cout << "ERROR!";
+                        continue;
+                }
             }
-        };
+        }
     }
 
     return 0;
