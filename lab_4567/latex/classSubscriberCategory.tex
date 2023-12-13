@@ -1,0 +1,62 @@
+\doxysection{Subscriber\+Category Class Reference}
+\hypertarget{classSubscriberCategory}{}\label{classSubscriberCategory}\index{SubscriberCategory@{SubscriberCategory}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSubscriberCategory_a52f8f55c8ea24ea523c3ca8072999a04}\label{classSubscriberCategory_a52f8f55c8ea24ea523c3ca8072999a04} 
+{\bfseries Subscriber\+Category} (string name)
+\item 
+\Hypertarget{classSubscriberCategory_a273e66d16220d587341350d713cc69eb}\label{classSubscriberCategory_a273e66d16220d587341350d713cc69eb} 
+void {\bfseries add\+\_\+\+Subscriber} (string name, \mbox{\hyperlink{classAddress}{Address}} \texorpdfstring{$\ast$}{*}address)
+\item 
+\Hypertarget{classSubscriberCategory_a2ee8482a1c184f5febe9ba2d34120c8f}\label{classSubscriberCategory_a2ee8482a1c184f5febe9ba2d34120c8f} 
+string {\bfseries get\+\_\+name} ()
+\item 
+\Hypertarget{classSubscriberCategory_abf7ad1585be989b573a893aa00dec2f9}\label{classSubscriberCategory_abf7ad1585be989b573a893aa00dec2f9} 
+\mbox{\hyperlink{classSubscriber}{Subscriber}} \texorpdfstring{$\ast$}{*} {\bfseries search\+\_\+subscriber} (string name)
+\item 
+\Hypertarget{classSubscriberCategory_ad61a5a04dc90c9bb8602ba97a9af8274}\label{classSubscriberCategory_ad61a5a04dc90c9bb8602ba97a9af8274} 
+void {\bfseries print\+\_\+subscriber} (string name)
+\item 
+\Hypertarget{classSubscriberCategory_ac1b9ef5ce4677385c48e66236319a790}\label{classSubscriberCategory_ac1b9ef5ce4677385c48e66236319a790} 
+bool {\bfseries is\+\_\+found} (string name)
+\item 
+\Hypertarget{classSubscriberCategory_a8fb4715a45c7da2ff37a0a0edb93052a}\label{classSubscriberCategory_a8fb4715a45c7da2ff37a0a0edb93052a} 
+void {\bfseries print\+\_\+subscriber\+\_\+list} ()
+\item 
+\Hypertarget{classSubscriberCategory_ab0c995433c04630521cd32da4c785082}\label{classSubscriberCategory_ab0c995433c04630521cd32da4c785082} 
+void {\bfseries changing\+\_\+subscriber\+\_\+data} (string name, \mbox{\hyperlink{classAddress}{Address}} \texorpdfstring{$\ast$}{*}address)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSubscriberCategory_af686aa59082f007d49b0cffa4060a08b}\label{classSubscriberCategory_af686aa59082f007d49b0cffa4060a08b} 
+string {\bfseries name\+Category}
+\item 
+\Hypertarget{classSubscriberCategory_a715258ea53ca0fa6e2c9e6291ba4dc9e}\label{classSubscriberCategory_a715258ea53ca0fa6e2c9e6291ba4dc9e} 
+map$<$ string, \mbox{\hyperlink{classSubscriber}{Subscriber}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries subscriber\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для записи категории пользователей
+
+add\+\_\+\+Subscriber(string name, Address\texorpdfstring{$\ast$}{*} address) добавляет пользователя в категорию
+
+print\+\_\+subscriber(string name) выводит в консоль информацию о пользователе
+
+get\+\_\+name() возвращает имя категории
+
+search\+\_\+subscriber(string name) возвращает пользователя по имени
+
+print\+\_\+subscriber(string name) выводит в консоль подписчика по имени
+
+is\+\_\+found(string name) проверяет есть ли пользователь в категории
+
+print\+\_\+subscriber\+\_\+list() выводит в консоль имена всех пользователей в категории
+
+changing\+\_\+subscriber\+\_\+data(string name, Address\texorpdfstring{$\ast$}{*} address) изменяет данные пользователя 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main.\+cpp\end{DoxyCompactItemize}

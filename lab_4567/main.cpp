@@ -5,7 +5,11 @@
 
 using namespace std;
 
-//АДРЕСС
+/**
+ * Структура для записи адреса
+ *
+ * print() выводит на экран все поля
+ * */
 class Address {
 public:
     Address(string new_street, string new_city, string new_state, int new_postal_code, string new_country) {
@@ -31,6 +35,9 @@ protected:
     string country;
 };
 
+/**
+ * Класс для записи админа
+ * */
 //АДМИН
 class Admin {
 public:
@@ -41,6 +48,13 @@ protected:
     string nameCategory;
 };
 
+/**
+ * Класс для записи пользователя
+ *
+ * get_address() возвращает адресс пользователя
+ *
+ * print() выводит в консоль информацию о пользователе
+ * */
 //ПОДПИЩИК
 class Subscriber {
 protected:
@@ -63,6 +77,25 @@ public:
     }
 };
 
+/**
+ * Класс для записи категории пользователей
+ *
+ * add_Subscriber(string name, Address* address) добавляет пользователя в категорию
+ *
+ * print_subscriber(string name) выводит в консоль информацию о пользователе
+ *
+ * get_name() возвращает имя категории
+ *
+ * search_subscriber(string name) возвращает пользователя по имени
+ *
+ * print_subscriber(string name) выводит в консоль подписчика по имени
+ *
+ * is_found(string name) проверяет есть ли пользователь в категории
+ *
+ * print_subscriber_list() выводит в консоль имена всех пользователей в категории
+ *
+ * changing_subscriber_data(string name, Address* address) изменяет данные пользователя
+ * */
 //КАТЕГОРИЯ
 class SubscriberCategory {
 protected:
@@ -80,7 +113,7 @@ public:
         subscriber_list.insert(make_pair(name, subscriber));
     }
 
-    string get_name () {
+    string get_name() {
         return nameCategory;
     }
 
@@ -121,7 +154,19 @@ public:
     }
 };
 
-
+/**
+ * Класс для записи адрессной книги
+ *
+ * add_admin(string name) добавляет админа в адресную книгу
+ *
+ * is_admin(string login) проверяет является ли пользователь админом
+ *
+ * addCategory(string name) добавляет категорию в адрессную книгу
+ *
+ * get_categories() возвращает список категорий
+ *
+ * print_categories() выводит в консоль название всез категорий
+ * */
 //САМА АДРЕСНАЯ КНИГА
 class SingletonAddressBook {
 protected:

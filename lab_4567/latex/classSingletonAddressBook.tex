@@ -1,0 +1,68 @@
+\doxysection{Singleton\+Address\+Book Class Reference}
+\hypertarget{classSingletonAddressBook}{}\label{classSingletonAddressBook}\index{SingletonAddressBook@{SingletonAddressBook}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSingletonAddressBook_ac565814e9bf5f3310ed8b1ad9c76de33}\label{classSingletonAddressBook_ac565814e9bf5f3310ed8b1ad9c76de33} 
+{\bfseries Singleton\+Address\+Book} (\mbox{\hyperlink{classSingletonAddressBook}{Singleton\+Address\+Book}} \&other)=delete
+\item 
+\Hypertarget{classSingletonAddressBook_a8429bec30bd2956dde0da9ddd6897354}\label{classSingletonAddressBook_a8429bec30bd2956dde0da9ddd6897354} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classSingletonAddressBook}{Singleton\+Address\+Book}} \&)=delete
+\item 
+\Hypertarget{classSingletonAddressBook_a2d8486fe960b1bd8759a2b166ec80e35}\label{classSingletonAddressBook_a2d8486fe960b1bd8759a2b166ec80e35} 
+void {\bfseries add\+\_\+admin} (string name)
+\item 
+\Hypertarget{classSingletonAddressBook_a5010f841965e0ac2a2c93a1027ef736d}\label{classSingletonAddressBook_a5010f841965e0ac2a2c93a1027ef736d} 
+bool {\bfseries is\+\_\+admin} (string login)
+\item 
+\Hypertarget{classSingletonAddressBook_a09124c651b3c4672b4e7fd58a504d448}\label{classSingletonAddressBook_a09124c651b3c4672b4e7fd58a504d448} 
+void {\bfseries add\+Category} (string name)
+\item 
+\Hypertarget{classSingletonAddressBook_adeccef40f815b25b705c23725e0db499}\label{classSingletonAddressBook_adeccef40f815b25b705c23725e0db499} 
+map$<$ string, \mbox{\hyperlink{classSubscriberCategory}{Subscriber\+Category}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries get\+\_\+categories} ()
+\item 
+\Hypertarget{classSingletonAddressBook_afd503faea8eef991a6752c179e4d484c}\label{classSingletonAddressBook_afd503faea8eef991a6752c179e4d484c} 
+void {\bfseries print\+\_\+categories} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSingletonAddressBook_abfbded0942456ff8fa494324eb0d3e10}\label{classSingletonAddressBook_abfbded0942456ff8fa494324eb0d3e10} 
+static \mbox{\hyperlink{classSingletonAddressBook}{Singleton\+Address\+Book}} \texorpdfstring{$\ast$}{*} {\bfseries instance} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSingletonAddressBook_ae02fa339be5d1f1ad5cce9049aa6f2db}\label{classSingletonAddressBook_ae02fa339be5d1f1ad5cce9049aa6f2db} 
+map$<$ string, \mbox{\hyperlink{classSubscriberCategory}{Subscriber\+Category}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries categories}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSingletonAddressBook_a06e31a3234a4e30a304abd7bda5d16f0}\label{classSingletonAddressBook_a06e31a3234a4e30a304abd7bda5d16f0} 
+map$<$ string, \mbox{\hyperlink{classAdmin}{Admin}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries admin\+\_\+list}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSingletonAddressBook_a73d12f9cf2c3e7d85c52d1240b069be0}\label{classSingletonAddressBook_a73d12f9cf2c3e7d85c52d1240b069be0} 
+static \mbox{\hyperlink{classSingletonAddressBook}{Singleton\+Address\+Book}} \texorpdfstring{$\ast$}{*} {\bfseries singleton} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для записи адрессной книги
+
+add\+\_\+admin(string name) добавляет админа в адресную книгу
+
+is\+\_\+admin(string login) проверяет является ли пользователь админом
+
+add\+Category(string name) добавляет категорию в адрессную книгу
+
+get\+\_\+categories() возвращает список категорий
+
+print\+\_\+categories() выводит в консоль название всез категорий 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main.\+cpp\end{DoxyCompactItemize}
